@@ -6,7 +6,7 @@ import { SectionHeading } from "@/components/site/SectionHeading";
 import { DepartmentCard } from "@/components/site/Cards";
 import { CtaBand } from "@/components/site/CtaBand";
 import { Button } from "@/components/ui/button";
-import { departments, gallery, hospital } from "@/content/site";
+import { departments, hospital, teamEventImage } from "@/content/site";
 import { breadcrumbJsonLd, seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/about")({
@@ -16,7 +16,7 @@ export const Route = createFileRoute("/about")({
       description:
         "Learn about Janakpur Neuro Hospital & Research Center Pvt. Ltd., a neurological healthcare institution in Janakpur, Dhanusha, dedicated to patient-focused care.",
       path: "/about",
-      image: gallery[3].src,
+      image: teamEventImage.src,
     }),
     scripts: [breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "About Us", path: "/about" }])],
   }),
@@ -41,7 +41,7 @@ function AboutPage() {
       />
       <section className="container-site grid items-center gap-12 py-20 lg:grid-cols-2">
         <Reveal className="overflow-hidden rounded-[2rem] shadow-elevated">
-          <img src={gallery[3].src} alt={gallery[3].alt} width={gallery[3].width} height={gallery[3].height} className="aspect-[4/3] w-full object-cover" />
+          <img src={teamEventImage.src} alt={teamEventImage.alt} width={teamEventImage.width} height={teamEventImage.height} className="aspect-[4/3] w-full object-cover" />
         </Reveal>
         <Reveal delay={100}>
           <SectionHeading eyebrow="Who we are" title="Neurological care for Janakpur and Madhesh Province" />

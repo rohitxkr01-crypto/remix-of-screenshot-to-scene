@@ -11,6 +11,16 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AppointmentRouteImport } from './routes/appointment'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as GalleryRouteImport } from './routes/gallery'
+import { Route as PatientGuideRouteImport } from './routes/patient-guide'
+import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
+import { Route as SitemapRouteImport } from './routes/sitemap'
+import { Route as StaffRouteImport } from './routes/staff'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as ArticlesIndexRouteImport } from './routes/articles.index'
+import { Route as ArticlesSlugRouteImport } from './routes/articles.$slug'
 import { Route as DoctorsIndexRouteImport } from './routes/doctors.index'
 import { Route as DoctorsSlugRouteImport } from './routes/doctors.$slug'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
@@ -25,6 +35,56 @@ const IndexRoute = IndexRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppointmentRoute = AppointmentRouteImport.update({
+  id: '/appointment',
+  path: '/appointment',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GalleryRoute = GalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PatientGuideRoute = PatientGuideRouteImport.update({
+  id: '/patient-guide',
+  path: '/patient-guide',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapRoute = SitemapRouteImport.update({
+  id: '/sitemap',
+  path: '/sitemap',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StaffRoute = StaffRouteImport.update({
+  id: '/staff',
+  path: '/staff',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArticlesIndexRoute = ArticlesIndexRouteImport.update({
+  id: '/articles/',
+  path: '/articles/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArticlesSlugRoute = ArticlesSlugRouteImport.update({
+  id: '/articles/$slug',
+  path: '/articles/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DoctorsIndexRoute = DoctorsIndexRouteImport.update({
@@ -56,8 +116,18 @@ const ApiPublicChatRoute = ApiPublicChatRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/appointment': typeof AppointmentRoute
+  '/contact': typeof ContactRoute
+  '/gallery': typeof GalleryRoute
+  '/patient-guide': typeof PatientGuideRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/sitemap': typeof SitemapRoute
+  '/staff': typeof StaffRoute
+  '/terms': typeof TermsRoute
+  '/articles/$slug': typeof ArticlesSlugRoute
   '/doctors/$slug': typeof DoctorsSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
+  '/articles/': typeof ArticlesIndexRoute
   '/doctors/': typeof DoctorsIndexRoute
   '/services/': typeof ServicesIndexRoute
   '/api/public/chat': typeof ApiPublicChatRoute
@@ -65,8 +135,18 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/appointment': typeof AppointmentRoute
+  '/contact': typeof ContactRoute
+  '/gallery': typeof GalleryRoute
+  '/patient-guide': typeof PatientGuideRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/sitemap': typeof SitemapRoute
+  '/staff': typeof StaffRoute
+  '/terms': typeof TermsRoute
+  '/articles/$slug': typeof ArticlesSlugRoute
   '/doctors/$slug': typeof DoctorsSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
+  '/articles': typeof ArticlesIndexRoute
   '/doctors': typeof DoctorsIndexRoute
   '/services': typeof ServicesIndexRoute
   '/api/public/chat': typeof ApiPublicChatRoute
@@ -75,8 +155,18 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/appointment': typeof AppointmentRoute
+  '/contact': typeof ContactRoute
+  '/gallery': typeof GalleryRoute
+  '/patient-guide': typeof PatientGuideRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/sitemap': typeof SitemapRoute
+  '/staff': typeof StaffRoute
+  '/terms': typeof TermsRoute
+  '/articles/$slug': typeof ArticlesSlugRoute
   '/doctors/$slug': typeof DoctorsSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
+  '/articles/': typeof ArticlesIndexRoute
   '/doctors/': typeof DoctorsIndexRoute
   '/services/': typeof ServicesIndexRoute
   '/api/public/chat': typeof ApiPublicChatRoute
@@ -86,8 +176,18 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/appointment'
+    | '/contact'
+    | '/gallery'
+    | '/patient-guide'
+    | '/privacy-policy'
+    | '/sitemap'
+    | '/staff'
+    | '/terms'
+    | '/articles/$slug'
     | '/doctors/$slug'
     | '/services/$slug'
+    | '/articles/'
     | '/doctors/'
     | '/services/'
     | '/api/public/chat'
@@ -95,8 +195,18 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/appointment'
+    | '/contact'
+    | '/gallery'
+    | '/patient-guide'
+    | '/privacy-policy'
+    | '/sitemap'
+    | '/staff'
+    | '/terms'
+    | '/articles/$slug'
     | '/doctors/$slug'
     | '/services/$slug'
+    | '/articles'
     | '/doctors'
     | '/services'
     | '/api/public/chat'
@@ -104,8 +214,18 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/appointment'
+    | '/contact'
+    | '/gallery'
+    | '/patient-guide'
+    | '/privacy-policy'
+    | '/sitemap'
+    | '/staff'
+    | '/terms'
+    | '/articles/$slug'
     | '/doctors/$slug'
     | '/services/$slug'
+    | '/articles/'
     | '/doctors/'
     | '/services/'
     | '/api/public/chat'
@@ -114,8 +234,18 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AppointmentRoute: typeof AppointmentRoute
+  ContactRoute: typeof ContactRoute
+  GalleryRoute: typeof GalleryRoute
+  PatientGuideRoute: typeof PatientGuideRoute
+  PrivacyPolicyRoute: typeof PrivacyPolicyRoute
+  SitemapRoute: typeof SitemapRoute
+  StaffRoute: typeof StaffRoute
+  TermsRoute: typeof TermsRoute
+  ArticlesSlugRoute: typeof ArticlesSlugRoute
   DoctorsSlugRoute: typeof DoctorsSlugRoute
   ServicesSlugRoute: typeof ServicesSlugRoute
+  ArticlesIndexRoute: typeof ArticlesIndexRoute
   DoctorsIndexRoute: typeof DoctorsIndexRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
   ApiPublicChatRoute: typeof ApiPublicChatRoute
@@ -135,6 +265,76 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/appointment': {
+      id: '/appointment'
+      path: '/appointment'
+      fullPath: '/appointment'
+      preLoaderRoute: typeof AppointmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
+      preLoaderRoute: typeof GalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/patient-guide': {
+      id: '/patient-guide'
+      path: '/patient-guide'
+      fullPath: '/patient-guide'
+      preLoaderRoute: typeof PatientGuideRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy-policy': {
+      id: '/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof PrivacyPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap': {
+      id: '/sitemap'
+      path: '/sitemap'
+      fullPath: '/sitemap'
+      preLoaderRoute: typeof SitemapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/staff': {
+      id: '/staff'
+      path: '/staff'
+      fullPath: '/staff'
+      preLoaderRoute: typeof StaffRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/articles/': {
+      id: '/articles/'
+      path: '/articles'
+      fullPath: '/articles/'
+      preLoaderRoute: typeof ArticlesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/articles/$slug': {
+      id: '/articles/$slug'
+      path: '/articles/$slug'
+      fullPath: '/articles/$slug'
+      preLoaderRoute: typeof ArticlesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/doctors/': {
@@ -178,8 +378,18 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AppointmentRoute: AppointmentRoute,
+  ContactRoute: ContactRoute,
+  GalleryRoute: GalleryRoute,
+  PatientGuideRoute: PatientGuideRoute,
+  PrivacyPolicyRoute: PrivacyPolicyRoute,
+  SitemapRoute: SitemapRoute,
+  StaffRoute: StaffRoute,
+  TermsRoute: TermsRoute,
+  ArticlesSlugRoute: ArticlesSlugRoute,
   DoctorsSlugRoute: DoctorsSlugRoute,
   ServicesSlugRoute: ServicesSlugRoute,
+  ArticlesIndexRoute: ArticlesIndexRoute,
   DoctorsIndexRoute: DoctorsIndexRoute,
   ServicesIndexRoute: ServicesIndexRoute,
   ApiPublicChatRoute: ApiPublicChatRoute,

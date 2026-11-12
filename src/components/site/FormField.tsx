@@ -16,12 +16,12 @@ export function Field({
 }: {
   id: string;
   label: string;
-  required?: boolean;
-  optional?: boolean;
-  error?: string;
-  hint?: string;
+  required?: boolean | undefined;
+  optional?: boolean | undefined;
+  error?: string | undefined;
+  hint?: string | undefined;
   children: ReactNode;
-  className?: string;
+  className?: string | undefined;
 }) {
   return (
     <div className={cn("space-y-1.5", className)}>

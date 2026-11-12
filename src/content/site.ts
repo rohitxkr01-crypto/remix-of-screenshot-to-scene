@@ -297,8 +297,16 @@ export const gallery: GalleryImage[] = [
   },
 ];
 
-export const heroImage = gallery[0];
-export const theatreImage = gallery[1];
+function pick<T>(list: readonly T[], index: number): T {
+  const item = list[index];
+  if (item === undefined) throw new Error(`Missing content item at index ${index}`);
+  return item;
+}
+
+export const heroImage = pick(gallery, 0);
+export const theatreImage = pick(gallery, 1);
+export const teamEventImage = pick(gallery, 3);
+export const leadDoctor = pick(doctors, 0);
 
 /** Business details that management should confirm before launch. */
 export const pendingConfirmation = [

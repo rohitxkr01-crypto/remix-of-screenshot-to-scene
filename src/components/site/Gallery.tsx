@@ -5,7 +5,8 @@ import { cn } from "@/lib/utils";
 
 export function Gallery({ images, featured = true }: { images: GalleryImage[]; featured?: boolean }) {
   const [index, setIndex] = useState<number | null>(null);
-  const open = index !== null;
+  const current = index !== null ? images[index] : undefined;
+  const open = current !== undefined;
   const closeBtn = useRef<HTMLButtonElement>(null);
   const lastFocus = useRef<HTMLElement | null>(null);
   const touchX = useRef<number | null>(null);
@@ -75,24 +76,26 @@ export function Gallery({ images, featured = true }: { images: GalleryImage[]; f
         ))}
       </ul>
 
-      {open && (
+      {open && index !== null && (
         <div
           role="dialog"
           aria-modal="true"
-          aria-label={`Image ${index! + 1} of ${images.length}: ${images[index!].caption}`}
+          aria-label={`Image ${index + 1} of ${images.length}: ${current.caption}`}
           className="fixed inset-0 z-[60] flex flex-col bg-navy-deep/95 animate-in fade-in duration-200"
           onClick={close}
-          onTouchStart={(e) => (touchX.current = e.touches[0].clientX)}
+          onTouchStart={(e) => (touchX.current = e.touches[0]?.clientX ?? null)}
           onTouchEnd={(e) => {
             if (touchX.current === null) return;
-            const dx = e.changedTouches[0].clientX - touchX.current;
+            const endX = e.changedTouches[0]?.clientX;
+            if (endX === undefined) return;
+            const dx = endX - touchX.current;
             if (Math.abs(dx) > 50) go(dx < 0 ? 1 : -1);
             touchX.current = null;
           }}
         >
           <div className="flex items-center justify-between p-4 text-navy-foreground">
             <p className="text-sm text-navy-muted" aria-live="polite">
-              {index! + 1} / {images.length}
+              {index + 1} / {images.length}
             </p>
             <button
               ref={closeBtn}
@@ -107,11 +110,11 @@ export function Gallery({ images, featured = true }: { images: GalleryImage[]; f
           <div className="relative flex flex-1 items-center justify-center px-4 pb-4 sm:px-20" onClick={(e) => e.stopPropagation()}>
             <figure key={index} className="flex max-h-full flex-col items-center animate-in fade-in zoom-in-95 duration-300">
               <img
-                src={images[index!].src}
-                alt={images[index!].alt}
+                src={current.src}
+                alt={current.alt}
                 className="max-h-[75vh] w-auto max-w-full rounded-xl object-contain"
               />
-              <figcaption className="mt-4 text-center text-navy-foreground">{images[index!].caption}</figcaption>
+              <figcaption className="mt-4 text-center text-navy-foreground">{current.caption}</figcaption>
             </figure>
             <button
               type="button"

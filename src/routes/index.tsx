@@ -22,7 +22,7 @@ import { ArticleCard, DepartmentCard, DoctorAvatar } from "@/components/site/Car
 import { Gallery } from "@/components/site/Gallery";
 import { ContactInfo } from "@/components/site/ContactInfo";
 import { ContactForm } from "@/components/site/ContactForm";
-import { departments, doctors, gallery, heroImage, hospital, theatreImage } from "@/content/site";
+import { departments, gallery, heroImage, hospital, leadDoctor, teamEventImage, theatreImage } from "@/content/site";
 import { articles } from "@/content/articles";
 import { seo } from "@/lib/seo";
 
@@ -159,11 +159,11 @@ function About() {
       <Reveal className="relative">
         <div className="overflow-hidden rounded-[2rem] shadow-elevated">
           <img
-            src={gallery[3].src}
-            alt={gallery[3].alt}
+            src={teamEventImage.src}
+            alt={teamEventImage.alt}
             loading="lazy"
-            width={gallery[3].width}
-            height={gallery[3].height}
+            width={teamEventImage.width}
+            height={teamEventImage.height}
             className="aspect-[5/4] w-full object-cover"
           />
         </div>
@@ -204,7 +204,7 @@ function About() {
 }
 
 function DoctorSection() {
-  const doctor = doctors[0];
+  const doctor = leadDoctor;
   return (
     <section className="bg-gradient-soft py-20 lg:py-28">
       <div className="container-site">
