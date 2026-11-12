@@ -15,6 +15,7 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { Toaster } from "@/components/ui/sonner";
+import { AssistantWidget } from "@/components/site/assistant/AssistantWidget";
 import { SITE_URL, hospital } from "@/content/site";
 
 const orgJsonLd = {
@@ -174,6 +175,7 @@ function RootComponent() {
         <Outlet />
       </main>
       <Footer />
+      <AssistantWidget />
       <Toaster />
     </QueryClientProvider>
   );

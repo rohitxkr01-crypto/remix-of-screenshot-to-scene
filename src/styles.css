@@ -1,5 +1,6 @@
 @import "tailwindcss" source(none);
 @source "../src";
+@source "../node_modules/streamdown/dist/*.js";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
@@ -252,6 +253,14 @@
 .animate-rise {
   animation: rise-in 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
   animation-delay: var(--delay, 0ms);
+}
+
+@keyframes voice-ring {
+  0% { transform: scale(0.85); opacity: 0.9; }
+  100% { transform: scale(1.25); opacity: 0; }
+}
+.voice-ring {
+  animation: voice-ring 1.8s cubic-bezier(0.2, 0.7, 0.2, 1) infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {

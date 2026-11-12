@@ -28,3 +28,9 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+
+- Website assistant facts, system prompt and chat limits live only in `src/lib/hospital-assistant.ts`; the text chat route and tests import from it so answers stay consistent.
+- Text chat streams through the public route `src/routes/api/public/chat.ts` (Lovable AI Gateway, server-only); it must stay FAQ-only and never read private data, since it is unauthenticated.
+- Voice calls use the Vapi Web SDK, loaded with a dynamic import in the browser only; the publishable Vapi key and assistant ID live in `src/content/voice.ts`. The voice assistant's prompt/voice/language are configured in the Vapi dashboard, not in code.
