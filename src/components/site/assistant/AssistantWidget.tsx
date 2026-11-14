@@ -1,10 +1,11 @@
-import { lazy, Suspense, useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { MessageCircle, X } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import type { AssistantTab } from "./AssistantPanel";
 import { useHospitalChat } from "./use-hospital-chat";
 import { useVoiceCall } from "./use-voice-call";
+import { onOpenAssistant } from "./assistant-bus";
 
 const AssistantPanel = lazy(() => import("./AssistantPanel"));
 
@@ -15,6 +16,18 @@ export function AssistantWidget() {
   const [tab, setTab] = useState<AssistantTab>("chat");
   const chat = useHospitalChat();
   const voice = useVoiceCall();
+
+  const sendRef = useRef(chat.send);
+  sendRef.current = chat.send;
+  useEffect(
+    () =>
+      onOpenAssistant(async ({ tab: t, prompts }) => {
+        setTab(t ?? "chat");
+        setOpen(true);
+        for (const p of prompts ?? []) await sendRef.current(p);
+      }),
+    [],
+  );
 
   useEffect(() => {
     if (!open) return;

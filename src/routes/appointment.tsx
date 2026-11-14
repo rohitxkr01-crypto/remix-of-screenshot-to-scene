@@ -6,6 +6,7 @@ import { hospital } from "@/content/site";
 import { breadcrumbJsonLd, seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/appointment")({
+  validateSearch: (s: Record<string, unknown>): { demo?: boolean } => (s["demo"] === true || s["demo"] === "1" || s["demo"] === 1 ? { demo: true } : {}),
   head: () => ({
     ...seo({
       title: "Request an Appointment",
@@ -25,6 +26,7 @@ const steps = [
 ];
 
 function AppointmentPage() {
+  const { demo } = Route.useSearch();
   return (
     <>
       <PageHero
@@ -35,7 +37,12 @@ function AppointmentPage() {
       />
       <section className="container-site grid gap-10 py-16 lg:grid-cols-[1.4fr_1fr] lg:py-20">
         <div className="rounded-3xl border bg-card p-6 shadow-card sm:p-10">
-          <AppointmentForm />
+          {demo && (
+            <p role="note" className="mb-6 rounded-2xl bg-accent px-4 py-3 text-sm font-medium text-navy">
+              Demo mode: sample details are filled in. Nothing is sent unless you press submit.
+            </p>
+          )}
+          <AppointmentForm demo={demo} />
         </div>
         <aside className="space-y-6">
           <div role="note" className="flex gap-3 rounded-3xl border border-emergency/30 bg-emergency/5 p-6">

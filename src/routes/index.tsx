@@ -42,6 +42,12 @@ function HomePage() {
   return (
     <>
       <Hero />
+      <section className="border-b bg-accent">
+        <div className="container-site flex flex-col items-center justify-between gap-3 py-4 text-center sm:flex-row sm:text-left">
+          <p className="font-semibold text-navy">New: try the AI assistant, voice call and department guide in one click.</p>
+          <Button asChild size="sm"><Link to="/demo">Try the live demo <ArrowRight aria-hidden="true" /></Link></Button>
+        </div>
+      </section>
       <SpecialtyStrip />
       <About />
       <DoctorSection />

@@ -10,6 +10,7 @@ const guideLinks = [
   { to: "/patient-guide", label: "Patient Guide" },
   { to: "/appointment", label: "Request an Appointment" },
   { to: "/gallery", label: "Hospital Gallery" },
+  { to: "/demo", label: "Try the Live Demo" },
 ] as const;
 
 function TopBar() {

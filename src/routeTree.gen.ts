@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AppointmentRouteImport } from './routes/appointment'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DemoRouteImport } from './routes/demo'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as PatientGuideRouteImport } from './routes/patient-guide'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
@@ -45,6 +46,11 @@ const AppointmentRoute = AppointmentRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DemoRoute = DemoRouteImport.update({
+  id: '/demo',
+  path: '/demo',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GalleryRoute = GalleryRouteImport.update({
@@ -118,6 +124,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/appointment': typeof AppointmentRoute
   '/contact': typeof ContactRoute
+  '/demo': typeof DemoRoute
   '/gallery': typeof GalleryRoute
   '/patient-guide': typeof PatientGuideRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
@@ -137,6 +144,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/appointment': typeof AppointmentRoute
   '/contact': typeof ContactRoute
+  '/demo': typeof DemoRoute
   '/gallery': typeof GalleryRoute
   '/patient-guide': typeof PatientGuideRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
@@ -157,6 +165,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/appointment': typeof AppointmentRoute
   '/contact': typeof ContactRoute
+  '/demo': typeof DemoRoute
   '/gallery': typeof GalleryRoute
   '/patient-guide': typeof PatientGuideRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
@@ -178,6 +187,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/appointment'
     | '/contact'
+    | '/demo'
     | '/gallery'
     | '/patient-guide'
     | '/privacy-policy'
@@ -197,6 +207,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/appointment'
     | '/contact'
+    | '/demo'
     | '/gallery'
     | '/patient-guide'
     | '/privacy-policy'
@@ -216,6 +227,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/appointment'
     | '/contact'
+    | '/demo'
     | '/gallery'
     | '/patient-guide'
     | '/privacy-policy'
@@ -236,6 +248,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AppointmentRoute: typeof AppointmentRoute
   ContactRoute: typeof ContactRoute
+  DemoRoute: typeof DemoRoute
   GalleryRoute: typeof GalleryRoute
   PatientGuideRoute: typeof PatientGuideRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
@@ -279,6 +292,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/demo': {
+      id: '/demo'
+      path: '/demo'
+      fullPath: '/demo'
+      preLoaderRoute: typeof DemoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/gallery': {
@@ -380,6 +400,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AppointmentRoute: AppointmentRoute,
   ContactRoute: ContactRoute,
+  DemoRoute: DemoRoute,
   GalleryRoute: GalleryRoute,
   PatientGuideRoute: PatientGuideRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,

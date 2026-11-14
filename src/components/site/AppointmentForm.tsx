@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { Link } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { CircleAlert, CircleCheck, LoaderCircle, Phone } from "lucide-react";
@@ -34,12 +34,29 @@ const initial: Values = {
 
 const timeOptions = ["Morning", "Midday", "Afternoon", "Any time"];
 
-export function AppointmentForm({ defaultDepartment }: { defaultDepartment?: string }) {
+export function sampleAppointment(): Values {
+  const d = new Date(Date.now() + 2 * 86400000);
+  return {
+    ...initial,
+    patientName: "Sita Sharma (demo)",
+    phone: "9800000000",
+    email: "demo@example.com",
+    department: departmentOptions[0] ?? "",
+    preferredDate: d.toISOString().slice(0, 10),
+    preferredTime: "Morning",
+    message: "Demo request — recurring headaches for two weeks.",
+  };
+}
+
+export function AppointmentForm({ defaultDepartment, demo }: { defaultDepartment?: string | undefined; demo?: boolean | undefined }) {
   const [values, setValues] = useState<Values>({ ...initial, department: defaultDepartment ?? "" });
   const [errors, setErrors] = useState<Partial<Record<keyof Values, string>>>({});
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [serverError, setServerError] = useState("");
   const submit = useServerFn(submitAppointment);
+  useEffect(() => {
+    if (demo) setValues(sampleAppointment());
+  }, [demo]);
 
   const set = <K extends keyof Values>(k: K, v: Values[K]) => {
     setValues((s) => ({ ...s, [k]: v }));

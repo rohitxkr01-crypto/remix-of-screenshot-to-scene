@@ -108,3 +108,20 @@ export function sanitizeChatHistory(input: unknown): ChatTurn[] | null {
   if (recent.length === 0 || recent[recent.length - 1]?.role !== "user") return null;
   return recent;
 }
+
+/** One-click demo questions shown on the /demo page. */
+export const DEMO_PROMPTS = [
+  { label: "डाक्टरहरू", text: "अस्पतालमा कुन कुन डाक्टर हुनुहुन्छ?", lang: "ne" },
+  { label: "Opening hours", text: "What are your opening hours?", lang: "en" },
+  { label: "Head injury", text: "My father had a head injury — what should I do?", lang: "en" },
+  { label: "ठेगाना", text: "अस्पताल कहाँ छ? फोन नम्बर के हो?", lang: "ne" },
+  { label: "Services", text: "Which neurosurgery services do you offer?", lang: "en" },
+  { label: "अपोइन्टमेन्ट", text: "अपोइन्टमेन्ट कसरी लिने?", lang: "ne" },
+] as const;
+
+/** Auto tour: Nepali, English, then an emergency-safety answer. */
+export const DEMO_TOUR = [
+  "नमस्ते! अस्पतालमा कुन कुन सेवा छन्?",
+  "Is the hospital open at night?",
+  "Can you tell me which medicine to take for a seizure?",
+];
